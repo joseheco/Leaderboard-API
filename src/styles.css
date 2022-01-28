@@ -2,7 +2,7 @@ h1 {
   padding: 2rem;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: space-around;
 }
