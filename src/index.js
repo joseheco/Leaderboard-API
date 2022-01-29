@@ -1,5 +1,10 @@
 import './styles.css';
-import { name, score, submitBtn, refreshBtn } from './utils.js';
+import {
+  name,
+  score,
+  submitBtn,
+  refreshBtn 
+} from './utils.js';
 import sendData from './sendData.js';
 
 const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/JBpxyjlHr5ZjiBM74biA/scores/';
@@ -19,7 +24,7 @@ const scoresLi = document.getElementsByClassName('boardList')[0];
 
 const loadList = async () => {
   scoresLi.innerHTML = '';
-    const { result: scores } = await fetch(url)
+  const { result: scores } = await fetch(url)
     .then((resp) => resp.json());
   scores.forEach((result) => {
     const list = document.createElement('li');
