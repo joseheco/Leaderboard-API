@@ -3,7 +3,7 @@ import {
   name,
   score,
   submitBtn,
-  refreshBtn 
+  refreshBtn,
 } from './utils.js';
 import sendData from './sendData.js';
 
