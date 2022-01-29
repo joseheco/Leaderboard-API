@@ -14,4 +14,4 @@ const sendData = async (url = '', data = {}) => {
   return response.json();
 };
 
-export { sendData }
+export default sendData;

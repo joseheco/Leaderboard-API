@@ -36,7 +36,27 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n\nconst name = document.getElementById('name');\nconst score = document.getElementById('score');\nconst submitBtn = document.getElementById('submit');\nsubmitBtn.addEventListener('click', async () => {\n  event.preventDefault();\n  await sendData('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/DEQqesROQX9iApBhejEk/scores/', {\n    user: name.value,\n    score: score.value\n  });\n  name.value = '';\n  score.value = '';\n});\nconst refreshBtn = document.getElementById('refresh');\nconst scoresLi = document.querySelector('.boardList')[0];\n\nconst loadList = async () => {\n  scoresLi.innerHTML = '';\n  const {\n    result: scores\n  } = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/DEQqesROQX9iApBhejEk/scores/').then(response => response.json());\n  scores.forEach(score => {\n    const list = document.createElement('li');\n    list.innerHTML = `${score.user} : ${score.score}`;\n    scoresLi.appendChild(list);\n  });\n};\n\nrefreshBtn.addEventListener('click', loadList);\nwindow.onload = loadList;\n\n//# sourceURL=webpack://leaderboard-api/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n/* harmony import */ var _sendData_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sendData.js */ \"./src/sendData.js\");\n\n\n\nconst url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/JBpxyjlHr5ZjiBM74biA/scores/';\n_utils_js__WEBPACK_IMPORTED_MODULE_1__.submitBtn.addEventListener('click', async () => {\n  // eslint-disable-next-line no-restricted-globals\n  event.preventDefault();\n  await (0,_sendData_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(url, {\n    user: _utils_js__WEBPACK_IMPORTED_MODULE_1__.name.value,\n    score: _utils_js__WEBPACK_IMPORTED_MODULE_1__.score.value\n  });\n  _utils_js__WEBPACK_IMPORTED_MODULE_1__.name.value = '';\n  _utils_js__WEBPACK_IMPORTED_MODULE_1__.score.value = '';\n  const msg = document.getElementById('msg');\n  setTimeout(() => {\n    msg.innerHTML = 'Score added successfully';\n  }, 1000);\n  setTimeout(() => {\n    msg.innerHTML = '';\n  }, 4000);\n});\nconst scoresLi = document.getElementsByClassName('boardList')[0];\n\nconst loadList = async () => {\n  scoresLi.innerHTML = '';\n  const {\n    result: scores\n  } = await fetch(url).then(resp => resp.json());\n  scores.forEach(result => {\n    const list = document.createElement('li');\n    list.innerHTML = `${result.user} : ${result.score}`;\n    scoresLi.appendChild(list);\n  });\n};\n\n_utils_js__WEBPACK_IMPORTED_MODULE_1__.refreshBtn.addEventListener('click', loadList);\nwindow.onload = loadList;\n\n//# sourceURL=webpack://leaderboard-api/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/sendData.js":
+/*!*************************!*\
+  !*** ./src/sendData.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst sendData = async (url = '', data = {}) => {\n  const response = await fetch(url, {\n    method: 'POST',\n    mode: 'cors',\n    cache: 'no-cache',\n    credentials: 'same-origin',\n    headers: {\n      'Content-type': 'application/json; charset=UTF-8'\n    },\n    redirect: 'follow',\n    referrerPolicy: 'no-referrer',\n    body: JSON.stringify(data)\n  });\n  return response.json();\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sendData);\n\n//# sourceURL=webpack://leaderboard-api/./src/sendData.js?");
+
+/***/ }),
+
+/***/ "./src/utils.js":
+/*!**********************!*\
+  !*** ./src/utils.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"name\": () => (/* binding */ name),\n/* harmony export */   \"score\": () => (/* binding */ score),\n/* harmony export */   \"submitBtn\": () => (/* binding */ submitBtn),\n/* harmony export */   \"refreshBtn\": () => (/* binding */ refreshBtn)\n/* harmony export */ });\nconst name = document.getElementById('name');\nconst score = document.getElementById('score');\nconst submitBtn = document.getElementById('submit');\nconst refreshBtn = document.getElementById('refresh');\n\n\n//# sourceURL=webpack://leaderboard-api/./src/utils.js?");
 
 /***/ }),
 
