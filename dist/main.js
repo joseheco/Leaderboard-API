@@ -20,6 +20,16 @@ eval("\n/*\n  MIT License http://www.opensource.org/licenses/mit-license.php\n  
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+eval("\n\nmodule.exports = function (url, options) {\n  if (!options) {\n    options = {};\n  }\n\n  if (!url) {\n    return url;\n  }\n\n  url = String(url.__esModule ? url.default : url); // If url is already wrapped in quotes, remove them\n\n  if (/^['\"].*['\"]$/.test(url)) {\n    url = url.slice(1, -1);\n  }\n\n  if (options.hash) {\n    url += options.hash;\n  } // Should url be wrapped?\n  // See https://drafts.csswg.org/css-values-3/#urls\n\n\n  if (/[\"'() \\t\\n]|(%20)/.test(url) || options.needQuotes) {\n    return \"\\\"\".concat(url.replace(/\"/g, '\\\\\"').replace(/\\n/g, \"\\\\n\"), \"\\\"\");\n  }\n\n  return url;\n};\n\n//# sourceURL=webpack://leaderboard-api/./node_modules/css-loader/dist/runtime/getUrl.js?");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/runtime/noSourceMaps.js":
 /*!**************************************************************!*\
   !*** ./node_modules/css-loader/dist/runtime/noSourceMaps.js ***!
@@ -36,7 +46,7 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n/* harmony import */ var _sendData_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sendData.js */ \"./src/sendData.js\");\n\n\n\nconst url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/JBpxyjlHr5ZjiBM74biA/scores/';\n_utils_js__WEBPACK_IMPORTED_MODULE_1__.submitBtn.addEventListener('click', async () => {\n  // eslint-disable-next-line no-restricted-globals\n  event.preventDefault();\n  await (0,_sendData_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(url, {\n    user: _utils_js__WEBPACK_IMPORTED_MODULE_1__.name.value,\n    score: _utils_js__WEBPACK_IMPORTED_MODULE_1__.score.value\n  });\n  _utils_js__WEBPACK_IMPORTED_MODULE_1__.name.value = '';\n  _utils_js__WEBPACK_IMPORTED_MODULE_1__.score.value = '';\n  const msg = document.getElementById('msg');\n  setTimeout(() => {\n    msg.innerHTML = 'Score added successfully';\n  }, 1000);\n  setTimeout(() => {\n    msg.innerHTML = '';\n  }, 4000);\n});\nconst scoresLi = document.getElementsByClassName('boardList')[0];\n\nconst loadList = async () => {\n  scoresLi.innerHTML = '';\n  const {\n    result: scores\n  } = await fetch(url).then(resp => resp.json());\n  scores.forEach(result => {\n    const list = document.createElement('li');\n    list.innerHTML = `${result.user} : ${result.score}`;\n    scoresLi.appendChild(list);\n  });\n};\n\n_utils_js__WEBPACK_IMPORTED_MODULE_1__.refreshBtn.addEventListener('click', loadList);\nwindow.onload = loadList;\n\n//# sourceURL=webpack://leaderboard-api/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles.css */ \"./src/styles.css\");\n/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils.js */ \"./src/utils.js\");\n/* harmony import */ var _sendData_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sendData.js */ \"./src/sendData.js\");\n\n\n\nconst url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/JBpxyjlHr5ZjiBM74biA/scores/';\n_utils_js__WEBPACK_IMPORTED_MODULE_1__.submitBtn.addEventListener('click', async () => {\n  // eslint-disable-next-line no-restricted-globals\n  event.preventDefault();\n  await (0,_sendData_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(url, {\n    user: _utils_js__WEBPACK_IMPORTED_MODULE_1__.name.value,\n    score: _utils_js__WEBPACK_IMPORTED_MODULE_1__.score.value\n  });\n  _utils_js__WEBPACK_IMPORTED_MODULE_1__.name.value = '';\n  _utils_js__WEBPACK_IMPORTED_MODULE_1__.score.value = '';\n  const msg = document.getElementById('msg');\n  setTimeout(() => {\n    msg.innerHTML = 'Score added successfully';\n  }, 1000);\n  setTimeout(() => {\n    msg.innerHTML = '';\n  }, 4000);\n});\nconst scoresLi = document.getElementsByClassName('boardList')[0];\n\nconst loadList = async () => {\n  scoresLi.innerHTML = '';\n  const {\n    result: scores\n  } = await fetch(url).then(resp => resp.json());\n  scores.forEach(result => {\n    const list = document.createElement('li');\n    list.className = 'score-data';\n    list.innerHTML = `${result.user} : ${result.score}`;\n    scoresLi.appendChild(list);\n  });\n};\n\n_utils_js__WEBPACK_IMPORTED_MODULE_1__.refreshBtn.addEventListener('click', loadList);\nwindow.onload = loadList;\n\n//# sourceURL=webpack://leaderboard-api/./src/index.js?");
 
 /***/ }),
 
@@ -66,7 +76,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"h1 {\\n  padding: 2rem;\\n}\\n\\n.container {\\n  display: flex;\\n  justify-content: space-around;\\n}\\n\\n.scores {\\n  border: 1px solid black;\\n  width: 130%;\\n  height: 70%;\\n}\\n\\nul li {\\n  list-style-type: none;\\n}\\n\\n.line {\\n  display: flex;\\n}\\n\\n.refresh {\\n  margin-left: 1rem;\\n  border: 2px solid;\\n  background-color: white;\\n  margin-top: 1rem;\\n  margin-bottom: 1rem;\\n}\\n\\n.form {\\n  display: flex;\\n  flex-direction: column;\\n}\\n\\n.input {\\n  border: 1px solid black;\\n  color: black;\\n  margin-top: 1rem;\\n  height: 20px;\\n}\\n\\n.input::placeholder {\\n  color: black;\\n}\\n\\n.submit {\\n  border: 3px solid black;\\n  background-color: white;\\n  margin-top: 1rem;\\n  height: 25px;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://leaderboard-api/./src/styles.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/getUrl.js */ \"./node_modules/css-loader/dist/runtime/getUrl.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);\n// Imports\n\n\n\nvar ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(/*! img/minecraft-wallpaper-compre.jpeg */ \"./src/img/minecraft-wallpaper-compre.jpeg\"), __webpack_require__.b);\nvar ___CSS_LOADER_URL_IMPORT_1___ = new URL(/* asset import */ __webpack_require__(/*! img/trofeo.png */ \"./src/img/trofeo.png\"), __webpack_require__.b);\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\nvar ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);\nvar ___CSS_LOADER_URL_REPLACEMENT_1___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_1___);\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"* {\\n  padding: 0;\\n  margin: 0;\\n}\\n\\nmain {\\n  background-image: url(\" + ___CSS_LOADER_URL_REPLACEMENT_0___ + \");\\n  background-position: auto;\\n  background-size: cover;\\n  height: 800px;\\n}\\n\\nh1 {\\n  font-family: Comic Neue, sans-serif;\\n  font-weight: bold;\\n  padding: 3rem;\\n  color: white;\\n  text-shadow: 2px 2px 8px green;\\n  margin-bottom: 3rem;\\n  background-image: url(\" + ___CSS_LOADER_URL_REPLACEMENT_1___ + \");\\n  background-repeat: no-repeat;\\n  background-position: 0.5rem;\\n  background-size: 40px;\\n}\\n\\nh2 {\\n  font-family: Comic Neue, sans-serif;\\n  font-weight: bold;\\n  color: white;\\n  text-shadow: 2px 2px 8px green;\\n}\\n\\n.container {\\n  display: flex;\\n  justify-content: space-around;\\n}\\n\\n.scores {\\n  border: 3px solid rgb(7, 65, 12);\\n  width: 130%;\\n  height: 130%;\\n}\\n\\nul li {\\n  list-style-type: none;\\n}\\n\\nul.boardList {\\n  padding: 1rem;\\n  margin: auto;\\n}\\n\\n.line {\\n  display: flex;\\n}\\n\\n.refresh {\\n  font-family: Comic Neue, sans-serif;\\n  font-weight: bold;\\n  margin-left: 1rem;\\n  border: 2px solid rgb(7, 65, 12);\\n  background-color: white;\\n  box-shadow: 4px 4px 0 darkgreen;\\n  margin-bottom: 1rem;\\n  height: 30px;\\n  width: 65px;\\n}\\n\\n.form {\\n  display: flex;\\n  flex-direction: column;\\n}\\n\\n.input {\\n  border: 1px solid rgb(7, 65, 12);\\n  color: black;\\n  margin-top: 1rem;\\n  height: 25px;\\n}\\n\\n.input::placeholder {\\n  color: black;\\n  font-family: Comic Neue, sans-serif;\\n  font-weight: bold;\\n}\\n\\n.submit {\\n  font-family: Comic Neue, sans-serif;\\n  font-weight: bold;\\n  border: 3px solid rgb(7, 65, 12);\\n  background-color: white;\\n  margin-top: 1rem;\\n  height: 25px;\\n  box-shadow: 4px 4px 0 darkgreen;\\n}\\n\\n.score-data {\\n  font-family: Comic Neue, sans-serif;\\n  font-weight: bold;\\n}\\n\\n.score-data:nth-child(odd) {\\n  background-color: rgb(149, 191, 102);\\n}\\n\\n.score-data:nth-child(even) {\\n  background-color: rgb(222, 238, 196);\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://leaderboard-api/./src/styles.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -138,6 +148,26 @@ eval("\n\n/* istanbul ignore next  */\nfunction apply(styleElement, options, obj
 
 eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElement) {\n  if (styleElement.styleSheet) {\n    styleElement.styleSheet.cssText = css;\n  } else {\n    while (styleElement.firstChild) {\n      styleElement.removeChild(styleElement.firstChild);\n    }\n\n    styleElement.appendChild(document.createTextNode(css));\n  }\n}\n\nmodule.exports = styleTagTransform;\n\n//# sourceURL=webpack://leaderboard-api/./node_modules/style-loader/dist/runtime/styleTagTransform.js?");
 
+/***/ }),
+
+/***/ "./src/img/minecraft-wallpaper-compre.jpeg":
+/*!*************************************************!*\
+  !*** ./src/img/minecraft-wallpaper-compre.jpeg ***!
+  \*************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"c77df6e67a26d80a10a9.jpeg\";\n\n//# sourceURL=webpack://leaderboard-api/./src/img/minecraft-wallpaper-compre.jpeg?");
+
+/***/ }),
+
+/***/ "./src/img/trofeo.png":
+/*!****************************!*\
+  !*** ./src/img/trofeo.png ***!
+  \****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"ada457cc03a5dc1ba226.png\";\n\n//# sourceURL=webpack://leaderboard-api/./src/img/trofeo.png?");
+
 /***/ })
 
 /******/ 	});
@@ -166,6 +196,9 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = __webpack_modules__;
+/******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -191,6 +224,18 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -205,6 +250,52 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/jsonp chunk loading */
+/******/ 	(() => {
+/******/ 		__webpack_require__.b = document.baseURI || self.location.href;
+/******/ 		
+/******/ 		// object to store loaded and loading chunks
+/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
+/******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+/******/ 		var installedChunks = {
+/******/ 			"main": 0
+/******/ 		};
+/******/ 		
+/******/ 		// no chunk on demand loading
+/******/ 		
+/******/ 		// no prefetching
+/******/ 		
+/******/ 		// no preloaded
+/******/ 		
+/******/ 		// no HMR
+/******/ 		
+/******/ 		// no HMR manifest
+/******/ 		
+/******/ 		// no on chunks loaded
+/******/ 		
+/******/ 		// no jsonp function
 /******/ 	})();
 /******/ 	
 /************************************************************************/

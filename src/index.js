@@ -28,6 +28,7 @@ const loadList = async () => {
     .then((resp) => resp.json());
   scores.forEach((result) => {
     const list = document.createElement('li');
+    list.className = 'score-data';
     list.innerHTML = `${result.user} : ${result.score}`;
     scoresLi.appendChild(list);
   });

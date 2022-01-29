@@ -1,5 +1,33 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  background-image: url('img/minecraft-wallpaper-compre.jpeg');
+  background-position: auto;
+  background-size: cover;
+  height: 800px;
+}
+
 h1 {
-  padding: 2rem;
+  font-family: Comic Neue, sans-serif;
+  font-weight: bold;
+  padding: 3rem;
+  color: white;
+  text-shadow: 2px 2px 8px green;
+  margin-bottom: 3rem;
+  background-image: url('img/trofeo.png');
+  background-repeat: no-repeat;
+  background-position: 0.5rem;
+  background-size: 40px;
+}
+
+h2 {
+  font-family: Comic Neue, sans-serif;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 8px green;
 }
 
 .container {
@@ -8,13 +36,18 @@ h1 {
 }
 
 .scores {
-  border: 1px solid black;
+  border: 3px solid rgb(7, 65, 12);
   width: 130%;
-  height: 70%;
+  height: 130%;
 }
 
 ul li {
   list-style-type: none;
+}
+
+ul.boardList {
+  padding: 1rem;
+  margin: auto;
 }
 
 .line {
@@ -22,11 +55,15 @@ ul li {
 }
 
 .refresh {
+  font-family: Comic Neue, sans-serif;
+  font-weight: bold;
   margin-left: 1rem;
-  border: 2px solid;
+  border: 2px solid rgb(7, 65, 12);
   background-color: white;
-  margin-top: 1rem;
+  box-shadow: 4px 4px 0 darkgreen;
   margin-bottom: 1rem;
+  height: 30px;
+  width: 65px;
 }
 
 .form {
@@ -35,19 +72,37 @@ ul li {
 }
 
 .input {
-  border: 1px solid black;
+  border: 1px solid rgb(7, 65, 12);
   color: black;
   margin-top: 1rem;
-  height: 20px;
+  height: 25px;
 }
 
 .input::placeholder {
   color: black;
+  font-family: Comic Neue, sans-serif;
+  font-weight: bold;
 }
 
 .submit {
-  border: 3px solid black;
+  font-family: Comic Neue, sans-serif;
+  font-weight: bold;
+  border: 3px solid rgb(7, 65, 12);
   background-color: white;
   margin-top: 1rem;
   height: 25px;
+  box-shadow: 4px 4px 0 darkgreen;
+}
+
+.score-data {
+  font-family: Comic Neue, sans-serif;
+  font-weight: bold;
+}
+
+.score-data:nth-child(odd) {
+  background-color: rgb(149, 191, 102);
+}
+
+.score-data:nth-child(even) {
+  background-color: rgb(222, 238, 196);
 }
